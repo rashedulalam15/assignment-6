@@ -1,13 +1,14 @@
 import { IWorkout } from "@/types/workout.type";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { CiClock2, CiStar } from "react-icons/ci";
 import { IoMdFlame } from "react-icons/io";
 
 const WorkoutCard = ({ workout }: { workout: IWorkout }) => {
   return (
+    <Link href={`/Workouts/${workout.id}`}>
     <div className="overflow-hidden rounded-xl bg-[#15171d] shadow-sm">
-      {/* Image */}
       <div className="relative h-44 w-full">
         <Image
           src={workout.image}
@@ -48,6 +49,7 @@ const WorkoutCard = ({ workout }: { workout: IWorkout }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

@@ -10,7 +10,6 @@ const getWorkouts = async()=>{
 
 const Workouts = async() => {
     const workoutsData = await getWorkouts()
-    console.log(workoutsData)
     return (
         <div className='container mx-auto'>
             <div className='space-y-1'>
