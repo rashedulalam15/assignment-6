@@ -140,7 +140,7 @@ const WorkoutDetailsPage = async ({
 
           <div className="mt-7 flex flex-wrap gap-3">
             <PlanButton workout={workout}></PlanButton>
-            <SaveButton></SaveButton>
+            <SaveButton workout={workout}></SaveButton>
           </div>
         </div>
       </div>

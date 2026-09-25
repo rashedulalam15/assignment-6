@@ -7,7 +7,6 @@ import { FiCalendar } from 'react-icons/fi';
 const PlanButton = ({workout}:{workout:IWorkout}) => {
     const {planWorkout, setPlanWorkout} = useContext(WorkoutsContext)
     const handlePlanWorkout =()=>{
-        console.log("plan btn clicked clicked", workout)
       setPlanWorkout([...planWorkout, workout])
     }
     return (
