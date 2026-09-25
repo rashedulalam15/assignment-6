@@ -1,3 +1,5 @@
+import PlanButton from "@/components/WorkoutsDetails/PlanButton";
+import SaveButton from "@/components/WorkoutsDetails/SaveButton";
 import { IWorkout } from "@/types/workout.type";
 import Image from "next/image";
 import { FiBookmark, FiCalendar } from "react-icons/fi";
@@ -137,17 +139,8 @@ const WorkoutDetailsPage = async ({
           </div>
 
           <div className="mt-7 flex flex-wrap gap-3">
-
-            <button className="btn flex items-center gap-2 bg-[#C2F800]   text-black ">
-              <FiCalendar />
-              Add to today's plan
-            </button>
-
-            <button className="btn flex items-center gap-2 text-[#E5E7EB]  ">
-              <FiBookmark />
-              Save for later
-            </button>
-
+            <PlanButton workout={workout}></PlanButton>
+            <SaveButton></SaveButton>
           </div>
         </div>
       </div>
