@@ -4,11 +4,25 @@ import SaveWorkoutCard from "@/components/shared/SaveWorkoutCard";
 import { WorkoutsContext } from "@/context/WorkoutsContext";
 import { IWorkout } from "@/types/workout.type";
 import Link from "next/link";
-import React, { useContext } from "react";
-import { DiVim } from "react-icons/di";
+import React, { useContext, useState } from "react";
 
 const PlanedWorkoutPage = () => {
   const { planWorkout, saveWorkout } = useContext(WorkoutsContext);
+  const [sortBy, setSortBy] = useState<"duration"|"caloriesBurned"|"rating">("duration")
+
+  const sortWorkouts=(workouts:IWorkout[])=>{
+         const sortedWorkouts = [...workouts]
+         if(sortBy==="duration"){
+            sortedWorkouts.sort((a , b)=>b.duration - a.duration)
+         }else if(sortBy==="caloriesBurned"){
+            sortedWorkouts.sort((a,b)=>b.caloriesBurned - a.caloriesBurned)
+         }else if(sortBy==="rating"){
+            sortedWorkouts.sort((a,b)=>b.rating - a.rating)
+         }
+         return sortedWorkouts
+  }
+  const sortedPlanWorkout = sortWorkouts(planWorkout)
+  const sortedSaveWorkout = sortWorkouts(saveWorkout)
   return (
     <div className="container mx-auto py-8">
       <h2 className="font-bold text-4xl font-oswald">My plan</h2>
@@ -29,9 +43,28 @@ const PlanedWorkoutPage = () => {
           <span className="text-4xl font-semibold mt-2">0</span>
         </div>
       </div>
+<div className="tabs tabs-lift relative">
 
+  <div className="absolute right-0 top-0 z-10 flex items-center gap-2">
+    <span className="text-sm text-[#8A92A0] whitespace-nowrap">Sort By</span>
+
+    <select
+      value={sortBy}
+      onChange={(e) =>
+        setSortBy(
+          e.target.value as "duration" | "caloriesBurned" | "rating"
+        )
+      }
+      className="select select-sm"
+    >
+      <option value="duration">Duration</option>
+      <option value="caloriesBurned">Calories</option>
+      <option value="rating">Rating</option>
+    </select>
+  </div>
+  </div>
       {/* name of each tab group should be unique */}
-      <div className="tabs tabs-lift">
+      <div className="tabs tabs-lift ">
         <input
           type="radio"
           name="my_tabs_3"
@@ -39,10 +72,10 @@ const PlanedWorkoutPage = () => {
           aria-label="Today's Plan"
           defaultChecked
         />
-        <div className="tab-content bg-base-100 border-base-300 p-6">
-          {planWorkout.length > 0 ? (
+        <div className="tab-content bg-base-100 border-base-300 rounded-xl p-6 mt-4">
+          {sortedPlanWorkout.length > 0 ? (
             <div className="space-y-4">
-              {planWorkout.map((workout: IWorkout) => {
+              {sortedPlanWorkout.map((workout: IWorkout) => {
                 return <PlanedWorkoutCard key={workout.id} workout={workout} />;
               })}
             </div>
@@ -62,6 +95,7 @@ const PlanedWorkoutPage = () => {
             </div>
           )}
         </div>
+        
 
         <input
           type="radio"
@@ -69,10 +103,11 @@ const PlanedWorkoutPage = () => {
           className="tab"
           aria-label="Saved"
         />
-        <div className="tab-content bg-base-100 border-base-300 p-6">
-          {saveWorkout.length > 0 ? (
+        
+        <div className="tab-content bg-base-100 border-base-300 rounded-xl p-6 mt-4">
+          {sortedSaveWorkout.length > 0 ? (
             <div className="space-y-4">
-              {saveWorkout.map((workout: IWorkout) => {
+              {sortedSaveWorkout.map((workout: IWorkout) => {
                 return <SaveWorkoutCard key={workout.id} workout={workout} />;
               })}
             </div>
@@ -96,5 +131,6 @@ const PlanedWorkoutPage = () => {
     </div>
   );
 };
+
 
 export default PlanedWorkoutPage;
