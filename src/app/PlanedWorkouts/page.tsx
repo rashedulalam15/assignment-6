@@ -6,10 +6,12 @@ import { IWorkout } from "@/types/workout.type";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 
+
 const PlanedWorkoutPage = () => {
   const { planWorkout, saveWorkout } = useContext(WorkoutsContext);
   const [sortBy, setSortBy] = useState<"duration"|"caloriesBurned"|"rating">("duration")
-
+  const [activeTab, setActiveTab] = useState<"plan" | "save">("plan")
+   const currentWorkouts = activeTab === "plan" ? planWorkout : saveWorkout;
   const sortWorkouts=(workouts:IWorkout[])=>{
          const sortedWorkouts = [...workouts]
          if(sortBy==="duration"){
@@ -32,15 +34,19 @@ const PlanedWorkoutPage = () => {
       <div className="grid grid-cols-3 bg-[#222630] rounded-xl p-10 my-6">
         <div>
           <p className="text-sm text-[#8A92A0]">Exercises</p>
-          <span className="text-4xl font-semibold mt-2">0</span>
+          <span className="text-4xl font-semibold mt-2">{currentWorkouts.length}</span>
         </div>
         <div>
           <p className="text-sm text-[#8A92A0]">Minutes</p>
-          <span className="text-4xl font-semibold mt-2">0</span>
+          <span className="text-4xl font-semibold mt-2">
+        {currentWorkouts.reduce((total: number, workout: IWorkout) =>total + workout.duration,0)}
+          </span>
         </div>
         <div>
           <p className="text-sm text-[#8A92A0]">claories</p>
-          <span className="text-4xl font-semibold mt-2">0</span>
+          <span className="text-4xl font-semibold mt-2">
+            {currentWorkouts.reduce((total: number, workout: IWorkout) =>total + workout.caloriesBurned,0)}
+          </span>
         </div>
       </div>
 <div className="tabs tabs-lift relative">
@@ -71,6 +77,7 @@ const PlanedWorkoutPage = () => {
           className="tab"
           aria-label="Today's Plan"
           defaultChecked
+          onChange={()=>setActiveTab("plan")}
         />
         <div className="tab-content bg-base-100 border-base-300 rounded-xl p-6 mt-4">
           {sortedPlanWorkout.length > 0 ? (
@@ -102,6 +109,7 @@ const PlanedWorkoutPage = () => {
           name="my_tabs_3"
           className="tab"
           aria-label="Saved"
+          onChange={()=>setActiveTab("save")}
         />
         
         <div className="tab-content bg-base-100 border-base-300 rounded-xl p-6 mt-4">

@@ -2,8 +2,9 @@ import { IWorkout } from "@/types/workout.type";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { CiCircleRemove, CiClock2, CiStar } from "react-icons/ci";
+import { CiClock2, CiStar } from "react-icons/ci";
 import { IoMdFlame } from "react-icons/io";
+import RemoveButton from "../PlanedWorkoutDetails/RemoveButton";
 
 const SaveWorkoutCard = ({ workout }: { workout: IWorkout }) => {
   return (
@@ -40,9 +41,7 @@ const SaveWorkoutCard = ({ workout }: { workout: IWorkout }) => {
         <Link href={`/Workouts/${workout.id}`}>
           <button className="btn rounded-3xl">View Details</button>
         </Link>
-        <button className="text-2xl">
-          <CiCircleRemove />
-        </button>
+        <RemoveButton workout={workout} type="save"></RemoveButton>
       </div>
     </div>
   );

@@ -2,9 +2,10 @@ import { IWorkout } from '@/types/workout.type';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { CiCircleRemove, CiClock2, CiStar } from 'react-icons/ci';
-import { FaCheck } from 'react-icons/fa';
+import {  CiClock2, CiStar } from 'react-icons/ci';
 import { IoMdFlame } from 'react-icons/io';
+import MarkAsDoneButton from '../PlanedWorkoutDetails/MarkAsDoneButton';
+import RemoveButton from '../PlanedWorkoutDetails/RemoveButton';
 
 const PlanedWorkoutCard = ({workout}:{workout:IWorkout}) => {
     return (
@@ -41,8 +42,8 @@ const PlanedWorkoutCard = ({workout}:{workout:IWorkout}) => {
             </div>
             <div className='flex gap-2'>
             <Link href={`/Workouts/${workout.id}`}><button className='btn rounded-3xl'>View Details</button></Link> 
-             <button className='btn bg-[#C2F800] text-black rounded-3xl'><FaCheck />Mark as Done</button>
-             <button className='text-2xl'><CiCircleRemove /></button>
+             <MarkAsDoneButton workout={workout}></MarkAsDoneButton>
+             <RemoveButton workout={workout} type="plan"></RemoveButton>
             </div>
                 
         </div>
