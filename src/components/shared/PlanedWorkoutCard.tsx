@@ -16,7 +16,7 @@ const PlanedWorkoutCard = ({workout}:{workout:IWorkout}) => {
             width={100}
             height={60}
             alt={workout.name}
-            className='rounded xl'
+            className='rounded-md'
             />
             <div>
             <h2 className='font-oswald font-semibold text-xl'>{workout.name}</h2>
