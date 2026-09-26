@@ -11,7 +11,7 @@ const getWorkouts = async()=>{
 const Workouts = async() => {
     const workoutsData = await getWorkouts()
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto my-10'>
             <div className='space-y-1'>
                 <h2 className='font-bold text-3xl font-oswald'>THE LIBRARY</h2>
                 <p className='text-[#9CA3AF]'>Twelve lifts covering every major muscle group.</p>
