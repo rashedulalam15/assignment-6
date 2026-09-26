@@ -1,0 +1,53 @@
+import { IWorkout } from '@/types/workout.type';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { CiCircleRemove, CiClock2, CiStar } from 'react-icons/ci';
+import { FaCheck } from 'react-icons/fa';
+import { IoMdFlame } from 'react-icons/io';
+
+const PlanedWorkoutCard = ({workout}:{workout:IWorkout}) => {
+    return (
+        
+            <div className='flex justify-between items-center bg-[#15171d] p-4 rounded-md'>
+            <div className='flex gap-2'>
+            <Image 
+            src={workout.image}
+            width={100}
+            height={60}
+            alt={workout.name}
+            className='rounded xl'
+            />
+            <div>
+            <h2 className='font-oswald font-semibold text-xl'>{workout.name}</h2>
+            <p className='text-sm text-[#8A92A0]'>{workout.equipment}</p>
+            
+            <div className="flex items-center gap-4 text-sm text-[#9CA3AF] mt-4">
+                      <div className="flex items-center gap-1">
+                        <CiClock2 className="text-base" />
+                        <span>{workout.duration} min</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <IoMdFlame className="text-base" />
+                        <span>{workout.caloriesBurned} kcal</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <CiStar className="text-base" />
+                        <span>{workout.rating}</span>
+                      </div>
+                    </div>
+            </div>
+
+            </div>
+            <div className='flex gap-2'>
+            <Link href={`/Workouts/${workout.id}`}><button className='btn rounded-3xl'>View Details</button></Link> 
+             <button className='btn bg-[#C2F800] text-black rounded-3xl'><FaCheck />Mark as Done</button>
+             <button className='text-2xl'><CiCircleRemove /></button>
+            </div>
+                
+        </div>
+
+    );
+};
+
+export default PlanedWorkoutCard;

@@ -1,4 +1,5 @@
 "use client";
+import PlanedWorkoutCard from "@/components/shared/PlanedWorkoutCard";
 import { WorkoutsContext } from "@/context/WorkoutsContext";
 import { IWorkout } from "@/types/workout.type";
 import Link from "next/link";
@@ -38,10 +39,18 @@ const PlanedWorkoutPage = () => {
           defaultChecked
         />
         <div className="tab-content bg-base-100 border-base-300 p-6">
-          {planWorkout.length>0?
-            planWorkout.map((workout:IWorkout)=>{
-
-            } ): <div className="p-10 grid justify-center items-center text-center">
+          {planWorkout.length > 0 ? (
+  <div className="space-y-4">
+    {planWorkout.map((workout: IWorkout) => {
+      return (
+        <PlanedWorkoutCard
+          key={workout.id}
+          workout={workout}
+        />
+      );
+    })}
+  </div>
+): <div className="p-10 grid justify-center items-center text-center">
                 <h2 className="font-oswald font-bold text-3xl">NOTHING HERE YET</h2>
                 <p className="text-sm text-[#8A92A0] mt-2 mb-5">Browse the library and add a lift to get today moving.</p>
                 <Link href="/"><button className="btn bg-[#C2F800] text-black rounded-3xl">Go to workouts</button></Link>
@@ -57,10 +66,18 @@ const PlanedWorkoutPage = () => {
           
         />
         <div className="tab-content bg-base-100 border-base-300 p-6">
-          {saveWorkout.length>0?
-            saveWorkout.map((workout:IWorkout)=>{
-
-            } ): <div className="p-10 grid justify-center items-center text-center">
+          {saveWorkout.length > 0 ? (
+  <div className="space-y-4">
+    {saveWorkout.map((workout: IWorkout) => {
+      return (
+        <PlanedWorkoutCard
+          key={workout.id}
+          workout={workout}
+        />
+      );
+    })}
+  </div>
+): <div className="p-10 grid justify-center items-center text-center">
                 <h2 className="font-oswald font-bold text-3xl">NOTHING HERE YET</h2>
                 <p className="text-sm text-[#8A92A0] mt-2 mb-5">Browse the library and add a lift to get today moving.</p>
                 <Link href="/"><button className="btn bg-[#C2F800] text-black rounded-3xl">Go to workouts</button></Link>
