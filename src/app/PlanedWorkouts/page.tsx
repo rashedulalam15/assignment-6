@@ -51,7 +51,7 @@ const PlanedWorkoutPage = () => {
       </div>
 <div className="tabs tabs-lift relative">
 
-  <div className="flex justify-end items-center gap-2 mb-3">
+  <div className="absolute right-0 top-0 z-10 flex items-center gap-2">
     <span className="text-sm text-[#8A92A0] whitespace-nowrap">Sort By</span>
 
     <select
