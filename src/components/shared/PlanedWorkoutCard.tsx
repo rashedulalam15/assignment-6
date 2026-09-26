@@ -10,8 +10,8 @@ import RemoveButton from '../PlanedWorkoutDetails/RemoveButton';
 const PlanedWorkoutCard = ({workout}:{workout:IWorkout}) => {
     return (
         
-            <div className='flex justify-between items-center bg-[#15171d] p-4 rounded-md'>
-            <div className='flex gap-2'>
+            <div className='flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 bg-[#15171d] p-4 rounded-md'>
+            <div className='flex gap-3'>
             <Image 
             src={workout.image}
             width={100}
@@ -40,7 +40,7 @@ const PlanedWorkoutCard = ({workout}:{workout:IWorkout}) => {
             </div>
 
             </div>
-            <div className='flex gap-2'>
+            <div className='flex flex-wrap gap-2'>
             <Link href={`/Workouts/${workout.id}`}><button className='btn rounded-3xl'>View Details</button></Link> 
              <MarkAsDoneButton workout={workout}></MarkAsDoneButton>
              <RemoveButton workout={workout} type="plan"></RemoveButton>

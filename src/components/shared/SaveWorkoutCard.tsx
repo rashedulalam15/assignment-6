@@ -8,8 +8,8 @@ import RemoveButton from "../PlanedWorkoutDetails/RemoveButton";
 
 const SaveWorkoutCard = ({ workout }: { workout: IWorkout }) => {
   return (
-    <div className="flex justify-between items-center bg-[#15171d] p-4 rounded-md">
-      <div className="flex gap-2">
+    <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 bg-[#15171d] p-4 rounded-md">
+      <div className="flex flex-wrap gap-2">
         <Image
           src={workout.image}
           width={100}

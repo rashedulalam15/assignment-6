@@ -4,7 +4,7 @@ import Image from 'next/image';
 const Footer = () => {
     return (
         <div className='bg-[#0C0D10]'>
-            <div className='container mx-auto flex justify-between items-center py-6'>
+            <div className='container mx-auto flex flex-col sm:flex-row justify-between items-center py-6'>
                <div className='flex gap-2'>
                 <Image 
                 src={logo}

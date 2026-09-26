@@ -29,7 +29,7 @@ const WorkoutDetailsPage = async ({
 
   return (
       <div className="container mx-auto grid gap-8 lg:grid-cols-2 mt-10 p-4">
-        <div className="relative h-[500px] overflow-hidden rounded-xl lg:h-[700px]">
+        <div className="relative h-[350px] sm:h-[450px] lg:h-[700px] overflow-hidden rounded-xl">
           <Image
             src={workout.image}
             alt={workout.name}

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.png";
 import NavbarCounts from "./NavbarCounts";
+import NavbarLinks from "./NavbarLinks";
 
 const Navbar = () => {
   return (
@@ -45,14 +46,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <Link href="/">Workouts</Link>
-            </li>
-            <li>
-              <Link href="/PlanedWorkouts">My Plan</Link>
-            </li>
-          </ul>
+          <NavbarLinks></NavbarLinks>
         </div>
         <NavbarCounts></NavbarCounts>
       </div>

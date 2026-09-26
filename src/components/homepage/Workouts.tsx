@@ -11,12 +11,12 @@ const getWorkouts = async()=>{
 const Workouts = async() => {
     const workoutsData = await getWorkouts()
     return (
-        <div className='container mx-auto my-10'>
+        <div className='container mx-auto my-10 px-4'>
             <div className='space-y-1'>
                 <h2 className='font-bold text-3xl font-oswald'>THE LIBRARY</h2>
                 <p className='text-[#9CA3AF]'>Twelve lifts covering every major muscle group.</p>
             </div>
-            <div className='grid grid-cols-3 gap-4 mt-5'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-5'>
                 {
                     workoutsData.map((workout:IWorkout, index:number)=>{
                         return <WorkoutCard key={index} workout={workout}></WorkoutCard>

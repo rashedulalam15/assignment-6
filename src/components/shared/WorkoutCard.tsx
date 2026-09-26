@@ -17,7 +17,7 @@ const WorkoutCard = ({ workout }: { workout: IWorkout }) => {
           className="object-cover"
         />
       </div>
-      <div className="p-5">
+      <div className="p-4 sm:p-5">
         <div className="mb-4 flex gap-2">
           {workout.muscleGroups.slice(0, 2).map((group) => (
             <span

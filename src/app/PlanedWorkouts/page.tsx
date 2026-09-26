@@ -26,12 +26,12 @@ const PlanedWorkoutPage = () => {
   const sortedPlanWorkout = sortWorkouts(planWorkout)
   const sortedSaveWorkout = sortWorkouts(saveWorkout)
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-6 sm:py-8 px-4">
       <h2 className="font-bold text-4xl font-oswald">My plan</h2>
       <p className="text-sm text-[#8A92A0] mt-2">
         Cap of five lifts for today. Finish them, then load more.
       </p>
-      <div className="grid grid-cols-3 bg-[#222630] rounded-xl p-10 my-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 bg-[#222630] rounded-xl p-5 sm:p-10 my-6 gap-6">
         <div>
           <p className="text-sm text-[#8A92A0]">Exercises</p>
           <span className="text-4xl font-semibold mt-2">{currentWorkouts.length}</span>
@@ -43,7 +43,7 @@ const PlanedWorkoutPage = () => {
           </span>
         </div>
         <div>
-          <p className="text-sm text-[#8A92A0]">claories</p>
+          <p className="text-sm text-[#8A92A0]">Calories</p>
           <span className="text-4xl font-semibold mt-2">
             {currentWorkouts.reduce((total: number, workout: IWorkout) =>total + workout.caloriesBurned,0)}
           </span>
@@ -51,7 +51,7 @@ const PlanedWorkoutPage = () => {
       </div>
 <div className="tabs tabs-lift relative">
 
-  <div className="absolute right-0 top-0 z-10 flex items-center gap-2">
+  <div className="flex justify-end items-center gap-2 mb-3">
     <span className="text-sm text-[#8A92A0] whitespace-nowrap">Sort By</span>
 
     <select
